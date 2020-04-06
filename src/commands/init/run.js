@@ -4,8 +4,9 @@
   const childProcess = require('child_process');
 
   module.exports = function(options) {
+    console.log('efesinit')
 
-    let _cmd = 'efes sc -t default --color';
+    let _cmd = 'edj-cli sc -t default --color';
 
     if (options.force) {
       _cmd += ' -f';

@@ -19,8 +19,7 @@ global.efesecho = console;
   const pkg = require('../../package.json');
 
   const run = function(command) {
-
-    let repo = command.name();
+    let repo = command.name().replace(/efes/g, '');
     let options = command.opts();
     let dirname = '../commands/';
 
@@ -47,7 +46,7 @@ global.efesecho = console;
       }
     }
 
-    require('../commands/' + command.name() + '/run')(options);
+    require('../commands/' + repo + '/run')(options);
 
   };
 
@@ -79,7 +78,6 @@ global.efesecho = console;
 
     let _cmd = fsp.readJSONSync(path.join(dirname, repo, 'command.json'));
     if (_cmd) {
-
       let _pro = program
         .command(_cmd.name)
         .description(_cmd.description);
