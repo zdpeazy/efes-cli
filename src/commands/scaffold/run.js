@@ -11,7 +11,6 @@
   const info = require('../../utils/efesEnv.js');
 
   module.exports = function(options, projectInfo) {
-
     let localDirInfo = info.getLocalDirInfo(process.cwd());
     console.log('----',localDirInfo);
     if (!projectInfo) {

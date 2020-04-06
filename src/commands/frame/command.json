@@ -1,14 +1,17 @@
 {
-  "name": "init",
+  "name": "frame",
+  "alias": "fw",
   "version": "1.0",
   "author": "edaijia",
-  "description": "为项目初始化项目配置文件，lint规则文件和项目文件结构",
+  "description": "自动生成前端vue、webpack代码脚手架。",
   "options": [{
     "flags": "-f, --force",
     "description": "在非空目录强制执行"
   }, {
     "flags": "-t, --type [value]",
-    "description": "前端框架选型"
+    "description": "脚手架类型"
+  }, {
+    "flags": "-c, --color"
   }],
   "requires": [],
   "packages": []

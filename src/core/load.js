@@ -19,8 +19,9 @@ global.efesecho = console;
   const pkg = require('../../package.json');
 
   const run = function(command) {
-    let repo = command.name().replace(/efes/g, '');
+    let repo = command.name();
     let options = command.opts();
+    console.log(options)
     let dirname = '../commands/';
 
     let _cmd = fsp.readJSONSync(path.join(__dirname, dirname, repo, 'command.json'));
