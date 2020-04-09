@@ -42,7 +42,7 @@
             let _pathname = path.join(pathConfig.root, devDir || '', pathConfig.output);
 
             if (fs.existsSync(_pathname)) {
-              global.efesecho.log(chalk.yellow('src:') + ' ' + chalk.grey(_pathname));
+              global.edjcho.log(chalk.yellow('src:') + ' ' + chalk.grey(_pathname));
               gulp.src(_pathname, {
                   base: path.join(pathConfig.root, devDir || '')
                 })

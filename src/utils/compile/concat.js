@@ -110,7 +110,7 @@
           let _path = file.history && file.history[0];
 
           contents = "\n\n\n \/\*\* SOURCE: " + _path + "  \*\*\/\n\n\n" + contents;
-          // global.efesecho.log(chalk.yellow('src:') + ' ' + chalk.grey(_path));
+          // global.edjcho.log(chalk.yellow('src:') + ' ' + chalk.grey(_path));
           
           if (!_path.match(rCssFile)) {
             contents = "";
@@ -152,7 +152,7 @@
           let _path = file.history && file.history[0];
 
           contents = "\/\*\* SOURCE: " + _path + "  \*\*\/\n\n\n" + contents + "\n\n\n";
-          // global.efesecho.log(chalk.yellow('src:') + ' ' + chalk.grey(_path));
+          // global.edjcho.log(chalk.yellow('src:') + ' ' + chalk.grey(_path));
 
           if (!_path.match(rJsFile)) {
             contents = "";

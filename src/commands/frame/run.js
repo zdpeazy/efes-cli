@@ -2,12 +2,20 @@
 
 (function() {
 
+  const ora = require('ora');
   const chalk = require('chalk');
-  const fs = require('fs');
+  const _copyTpl = require('./utils/copyTpl.js');
 
-
-  module.exports = function(options, projectInfo) {
-    console.log('将为您创建vue框架')
-  };
-
+  async function run(options){
+    const spinner = ora('导入中...').start();
+    const copyTpl = new _copyTpl(options);
+    const result = await copyTpl.init()
+      .catch(error => {
+        global.edjcho.log(chalk.red(error));
+      });
+    spinner.stop();
+    global.edjcho.log(result);
+  }
+  
+  module.exports = run;
 })();

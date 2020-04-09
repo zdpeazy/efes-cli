@@ -1,6 +1,6 @@
 {
   "name": "start",
-  "version": "0.1",
+  "version": "1.0",
   "author": "eagle.h",
   "description": "开启node http server",
   "options": [{

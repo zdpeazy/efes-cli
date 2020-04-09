@@ -3,7 +3,7 @@
   "alias": "fw",
   "version": "1.0",
   "author": "edaijia",
-  "description": "自动生成前端vue、webpack代码脚手架。",
+  "description": "自动生成前端vue、react代码脚手架。",
   "options": [{
     "flags": "-f, --force",
     "description": "在非空目录强制执行"

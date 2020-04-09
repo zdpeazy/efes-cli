@@ -6,35 +6,34 @@
   const childProcess = require('child_process');
 
   module.exports = function(options) {
-    let _cmd = '';
-
+    console.log(options)
     if (!options.type) {
-      global.efesecho.log(chalk.red(chalk.bold('请选择前端开发架构：')));
-      global.efesecho.log(chalk.green(chalk.bold('前端开发架构')) + ': 目前支持normal(原efes默认jquery)、vue、webpack');
+      global.edjcho.log(chalk.red(chalk.bold('请选择前端开发架构：')));
+      global.edjcho.log(chalk.green(chalk.bold('前端开发架构')) + ': 目前支持normal(原efes默认jquery)、vue、react');
 
       inquirer.prompt([ { 
         type: 'list', 
         name: 'type', 
         message: '请选择要使用的前端框架', 
         'choices': [{
-          'name': 'efes',
-          checked: true
+          'name': 'normal',
+          checked: false
         }, {
           'name': 'vue',
-          checked: false
+          checked: true
         }, {
           'name': 'react',
           checked: false
         }],
         'default': true,
         'required': true
-      }], res => {
+      }]).then(res => {
         options.type = res.type;
         const _cmd = getCmd(options);
         childProcess.execSync(_cmd, { stdio: 'inherit' });
       })
     } else {
-      global.efesecho.log(chalk.green(chalk.bold(`准备安装${options.type}框架`)));
+      global.edjcho.log(chalk.green(chalk.bold(`准备安装${options.type}框架`)));
       const _cmd = getCmd(options);
       childProcess.execSync(_cmd, { stdio: 'inherit' });
     }
@@ -43,14 +42,14 @@
 
 })();
 
-const getCmd = (options = {type: 'efes'}) => {
+const getCmd = (options = {type: 'normal'}) => {
   let _cmd = 'edj-cli sc -t default --color';
   switch(options.type){
-    case 'efes':
+    case 'normal':
       _cmd = !options.force ? _cmd : `${_cmd} -f`;
       break;
     default:
-      _cmd = `edj-cli fw -t ${options.type}`;
+      _cmd = !options.force ? `edj-cli fw -t ${options.type}` : `edj-cli fw -t ${options.type} -f`;
       break;
   }
   return _cmd;

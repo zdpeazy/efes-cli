@@ -9,7 +9,7 @@ gulp.task('clean', require('del').bind(null, ['dist']));
 
 /* es6 */
 gulp.task('es6', function() {
-  return gulp.src(['src/**/*.js','!src/commands/scaffold/template/**/*.js', '!src/libs/**/*.js'])
+  return gulp.src(['src/**/*.js','!src/commands/scaffold/template/**/*.js', '!src/commands/frame/template/**/*.js',  '!src/libs/**/*.js'])
     .pipe($.plumber())
     .pipe($.babel({
       presets: ['es2015']
@@ -25,6 +25,9 @@ gulp.task('copy', function(){
 
   gulp.src(['src/commands/scaffold/template/**/*'])
     .pipe(gulp.dest('dist/commands/scaffold/template'));
+
+  gulp.src(['src/commands/frame/template/**/*'])
+    .pipe(gulp.dest('dist/commands/frame/template'));
 
 });
 

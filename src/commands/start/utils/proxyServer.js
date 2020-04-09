@@ -64,6 +64,7 @@
       }
     };
 
+    
     let projectConfigs = epc.getProjectConfig(host, pathname, spaceInfo, spaceDirname, spaceProjectConfigs);
     // console.log(host, pathname, projectConfigs);
     let pathConfigs = reqMatchToLocalPath.match(host, pathname, projectConfigs, spaceDirname);
@@ -71,16 +72,17 @@
     // response.end(JSON.stringify(spaceProjectConfigs));
     // return;
 
-    global.efesecho.log(chalk.bold.green('GET:') + ' http://' + host + pathname);
+    // global.edjcho.log(chalk.bold.green('GET:') + ' http://' + host + pathname);
+
+    // efes原打包 通过读取配置文件gulp
     buildResBody.build(pathConfigs, options, function(err, filedata, local) {
       //console.log(chalk.grey('Local:' + local));
-      
       if (err) {
 
-        global.efesecho.error(chalk.bold.white.bgRed(' ERROR '));
+        global.edjcho.error(chalk.bold.white.bgRed(' ERROR '));
 
         err.some(function(_err) {
-          global.efesecho.error(_err);
+          global.edjcho.error(_err);
         });
 
         if (filedata) {
@@ -93,6 +95,7 @@
         output(200, filedata);
       }
     });
+    // webpack打包
 
   };
 
@@ -117,9 +120,9 @@
 
     server.on('listening', function(err) {
       if (err) {
-        global.efesecho.error(chalk.red('efes本地代理服务启动失败'));
+        global.edjcho.error(chalk.red('edj-cli本地代理服务启动失败'));
       } else {
-        global.efesecho.log('启动成功，监听端口： %s', options.port);
+        global.edjcho.log('启动成功，监听端口： %s', options.port);
       }
     });
 

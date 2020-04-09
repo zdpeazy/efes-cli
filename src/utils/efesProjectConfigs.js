@@ -44,7 +44,7 @@ function findAllEfesConfigs(spaceDirname, callback) {
   // 查找到efes工作空间下面所有含有 .efesconfig 的目录
   regexfiles(spaceDirname, regExcludes, regIncludes, function(err, subfiles) {
     if (err) {
-      global.efesecho.log(chalk.red(err.message));
+      global.edjcho.log(chalk.red(err.message));
       callback(subfiles);
       return;
     }

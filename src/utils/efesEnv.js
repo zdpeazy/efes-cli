@@ -52,7 +52,7 @@
     let matchLength = 0;
 
     if (!spaceInfo) {
-      global.efesecho.log('未找到efes工作目录配置文件：efeproject.json');
+      global.edjcho.log('未找到efes工作目录配置文件：efeproject.json');
       return null;
     }
 

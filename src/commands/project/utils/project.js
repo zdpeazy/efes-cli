@@ -66,8 +66,8 @@
             childProcess.exec('git branch', {
               cwd: repoPath
             }, function(err, stdout) {
-              global.efesecho.log('\n');
-              global.efesecho.log(chalk.green('更新 '), `${repoName}`);
+              global.edjcho.log('\n');
+              global.edjcho.log(chalk.green('更新 '), `${repoName}`);
 
               if (rBranch.test(stdout)) {
 
@@ -83,15 +83,15 @@
 
               } else {
 
-                global.efesecho.log(chalk.yellow('Warnning'), repoName, '不是 ' + localBranch + ' 分支， 跳过更新。');
+                global.edjcho.log(chalk.yellow('Warnning'), repoName, '不是 ' + localBranch + ' 分支， 跳过更新。');
                 configRepo();
                 callback();
 
               }
             });
           } else {
-            global.efesecho.log('\n');
-            global.efesecho.log(chalk.green('克隆 '), `${repoName}`);
+            global.edjcho.log('\n');
+            global.edjcho.log(chalk.green('克隆 '), `${repoName}`);
 
             
             let _clone = childProcess.spawn(`git`, ['clone', repoName, pj.git.repo], {
@@ -100,13 +100,13 @@
 
             _clone.on('exit', function(code) {
 
-              global.efesecho.log('---',code);
+              global.edjcho.log('---',code);
 
               configRepo();
 
               if (localBranch !== 'master') {
 
-                global.efesecho.log(chalk.green('检出 '), `${repoName} 分支：${localBranch} ${remoteBranch}`);
+                global.edjcho.log(chalk.green('检出 '), `${repoName} 分支：${localBranch} ${remoteBranch}`);
 
                 let _checkout = childProcess.exec(`git checkout -b ${localBranch} ${remoteBranch}`, {
                   cwd: repoPath,

@@ -1,6 +1,6 @@
 "use strict";
 (function() {
-  global.efesecho.log('正在启动efes本地代理服务...');
+  global.edjcho.log('正在启动edj-cli本地代理服务...');
   let stream = process.stdout;
   let loadding = ['|', '/', '-', '\\'];
   let _i = 0;
@@ -33,7 +33,7 @@
     let spaceInfo = fsp.readJSONSync(path.join(efesSpaceDirname,'efesproject.json'));
 
     if (!spaceInfo) {
-      global.efesecho.log(chalk.red("没有在当前目录找到efes项目配置文件：efesproject.json，请先参考github上efes的说明创建此文件。"));
+      global.edjcho.log(chalk.red("没有在当前目录找到efes项目配置文件：efesproject.json，请先参考github上efes的说明创建此文件。"));
     } else {
       proxyServer(spaceInfo, efesSpaceDirname, options);
     }

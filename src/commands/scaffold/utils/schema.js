@@ -179,18 +179,22 @@
 
       let _this = this;
 
-      _this.inquirer.prompt(_this.exLanguage, function(answers2) {
+      _this.inquirer.prompt(_this.exLanguage)
+        .then(answers2 => {
 
-        _this.info.exCoffee = answers2.check.indexOf('coffee') !== -1;
-        _this.info.exLess = answers2.check.indexOf('less') !== -1;
-        _this.info.exJade = answers2.check.indexOf('jade') !== -1;
-        _this.info.exES6 = answers2.check.indexOf('es6') !== -1;
-        _this.info.exIcons = answers2.check.indexOf('icons精灵图') !== -1;
-        _this.info.exWebp = answers2.check.indexOf('webp') !== -1;
-
-        _this._confirmEnd();
-
-      });
+          _this.info.exCoffee = answers2.check.indexOf('coffee') !== -1;
+          _this.info.exLess = answers2.check.indexOf('less') !== -1;
+          _this.info.exJade = answers2.check.indexOf('jade') !== -1;
+          _this.info.exES6 = answers2.check.indexOf('es6') !== -1;
+          _this.info.exIcons = answers2.check.indexOf('icons精灵图') !== -1;
+          _this.info.exWebp = answers2.check.indexOf('webp') !== -1;
+  
+          _this._confirmEnd();
+  
+        })
+        .catch(error => {
+          console.log(error)
+        });;
     }
 
     _writeMobileMod() {
@@ -199,27 +203,31 @@
 
       _this.info.scaffold = "h5";
 
-      _this.inquirer.prompt(_this.mobileMod, function(answersMobile) {
+      _this.inquirer.prompt(_this.mobileMod)
+        .then(answersMobile => {
 
-        _this.info.modWeixin = answersMobile.check.indexOf('微信') !== -1;
+          _this.info.modWeixin = answersMobile.check.indexOf('微信') !== -1;
 
-        _this.info.modWebp = answersMobile.check.indexOf('webp图片优化') !== -1;
+          _this.info.modWebp = answersMobile.check.indexOf('webp图片优化') !== -1;
 
-        _this.info.modScroll = answersMobile.check.indexOf('滑屏') !== -1;
+          _this.info.modScroll = answersMobile.check.indexOf('滑屏') !== -1;
 
-        _this.info.modDownload = answersMobile.check.indexOf('唤起客户端或跳转到下载') !== -1;
+          _this.info.modDownload = answersMobile.check.indexOf('唤起客户端或跳转到下载') !== -1;
 
-        _this.info.modCallClient = answersMobile.check.indexOf('客户端内部调用原生功能') !== -1;
+          _this.info.modCallClient = answersMobile.check.indexOf('客户端内部调用原生功能') !== -1;
 
-        _this.info.modShakeHand = answersMobile.check.indexOf('摇一摇') !== -1;
+          _this.info.modShakeHand = answersMobile.check.indexOf('摇一摇') !== -1;
 
-        _this.info.modWeight = answersMobile.check.indexOf('重力感应') !== -1;
+          _this.info.modWeight = answersMobile.check.indexOf('重力感应') !== -1;
 
-        _this.info.modLandscape = answersMobile.check.indexOf('横屏提示') !== -1;
+          _this.info.modLandscape = answersMobile.check.indexOf('横屏提示') !== -1;
 
-        _this._writeExLanguage();
+          _this._writeExLanguage();
 
-      });
+        })
+        .catch(error => {
+          console.log(error)
+        });
     }
 
     _writePcMod() {
@@ -236,47 +244,55 @@
 
       let _this = this;
 
-      _this.inquirer.prompt(_this.platform, function(answers) {
+      _this.inquirer.prompt(_this.platform)
+        .then(answers => {
 
-        _this.info.platform = answers.check === "mobile-web" ? "mobile" : "pc";
-
-        if (_this.info.platform === 'mobile') {
-
-          _this._writeMobileMod();
-
-        } else {
-
-          _this._writePcMod();
-
-        }
-      });
+          _this.info.platform = answers.check === "mobile-web" ? "mobile" : "pc";
+  
+          if (_this.info.platform === 'mobile') {
+  
+            _this._writeMobileMod();
+  
+          } else {
+  
+            _this._writePcMod();
+  
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        });;
     }
 
     _writeScaffold() {
 
       let _this = this;
 
-      _this.inquirer.prompt(_this.scaffold, function(answers) {
+      _this.inquirer.prompt(_this.scaffold)
+        .then(answers => {
 
-        _this.info.scaffold = answers.check === "NO" ? "none" : "default";
-
-        if (_this.info.scaffold === 'none') {
-
-          _this.info.exCoffee = false;
-          _this.info.exLess = false;
-          _this.info.exJade = false;
-          _this.info.exES6 = false;
-          _this.info.exIcons = false;
-          _this.info.exWebp = false;
-
-          _this._confirmEnd();
-
-        } else {
-
-          _this._writeExLanguage();
-
-        }
-      });
+          _this.info.scaffold = answers.check === "NO" ? "none" : "default";
+  
+          if (_this.info.scaffold === 'none') {
+  
+            _this.info.exCoffee = false;
+            _this.info.exLess = false;
+            _this.info.exJade = false;
+            _this.info.exES6 = false;
+            _this.info.exIcons = false;
+            _this.info.exWebp = false;
+  
+            _this._confirmEnd();
+  
+          } else {
+  
+            _this._writeExLanguage();
+  
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        });;
 
     }
 

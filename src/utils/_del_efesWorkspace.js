@@ -213,7 +213,7 @@
       regexfiles(subdirname, regExcludes, regIncludes, function(err, subfiles) {
 
         if (err) {
-          global.efesecho.log(chalk.red(err.message));
+          global.edjcho.log(chalk.red(err.message));
           callback2();
           return;
         }
